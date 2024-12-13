@@ -3302,8 +3302,8 @@ export class LGraphCanvas {
       // yyh
       if (this.dragging_rectangle) {
         this.#handleMultiSelect(e, this.dragging_rectangle as Float32Array)
-        this.dragging_rectangle = null;
       }
+      this.dragging_rectangle = null;
       this.dragging_rectangle_ready = false;
       // yyh
       
@@ -3318,6 +3318,7 @@ export class LGraphCanvas {
       // yyh
       if(Math.abs(e.clientX - this.dragging_canvas_mouse[0]) < 3 && Math.abs(e.clientY - this.dragging_canvas_mouse[1]) < 3) {
           var node = this.graph.getNodeOnPos( e.canvasX, e.canvasY, this.visible_nodes);
+          console.log("node123", node, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
           if (!node) {
               this.processContextMenu(node, e);
           }
