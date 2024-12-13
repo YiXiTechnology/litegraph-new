@@ -2305,8 +2305,10 @@ export class LGraphCanvas {
           })
         }
 
-         // yyh
-         this.dragging_rectangle_ready = true;
+        // yyh
+        pointer.onClick = () => {
+          this.dragging_rectangle_ready = true;
+        }
       }
     }
 
@@ -3315,10 +3317,10 @@ export class LGraphCanvas {
       // right button
       // this.dirty_canvas = true
 
+      console.log("node123", e.canvasX, e.canvasY, this.dragging_canvas_mouse);
       // yyh
       if(Math.abs(e.clientX - this.dragging_canvas_mouse[0]) < 3 && Math.abs(e.clientY - this.dragging_canvas_mouse[1]) < 3) {
           var node = this.graph.getNodeOnPos( e.canvasX, e.canvasY, this.visible_nodes);
-          console.log("node123", node, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
           if (!node) {
               this.processContextMenu(node, e);
           }
