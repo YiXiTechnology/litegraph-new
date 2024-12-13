@@ -2052,10 +2052,13 @@ export class LGraphCanvas {
       // Right / aux button
 
       // Sticky select - won't remove single nodes
-      if (node) this.processSelect(node, e, true)
-
-      // Show context menu for the node or group under the pointer
-      this.processContextMenu(node, e)
+      if (node) {
+        this.processSelect(node, e, true)
+        // Show context menu for the node or group under the pointer
+        this.processContextMenu(node, e)
+      }
+      // yyh
+      
     }
 
     this.last_mouse = [x, y]
@@ -3295,7 +3298,15 @@ export class LGraphCanvas {
       }
 
       this.connecting_links = null
-      this.dragging_rectangle_ready = false; // yyh
+
+      // yyh
+      if (this.dragging_rectangle) {
+        this.#handleMultiSelect(e, this.dragging_rectangle as Float32Array)
+        this.dragging_rectangle = null;
+      }
+      this.dragging_rectangle_ready = false;
+      // yyh
+      
     } else if (e.button === 1) {
       // middle button
       this.dirty_canvas = true
