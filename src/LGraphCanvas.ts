@@ -3184,11 +3184,14 @@ export class LGraphCanvas {
       this.connecting_links = null
       this.dragging_canvas = false
 
-      // yyh
-      if (e.button === 2) {
-        this.processContextMenu(null, e);
+      if (e.button === 0) {
+        this.dragging_rectangle_ready = false;
+      } else if (e.button === 2) {
+        let node = this.graph.getNodeOnPos( e.canvasX, e.canvasY, this.visible_nodes);
+        if (!node) {
+            this.processContextMenu(node, e);
+        }
       }
-      // yyh
 
       graph.change()
 
@@ -3324,8 +3327,7 @@ export class LGraphCanvas {
       // right button
       this.dirty_canvas = true
 
-      // yyh
-      this.dragging_canvas = false;
+      this.dragging_canvas = false; // yyh
     }
 
     pointer.isDown = false
