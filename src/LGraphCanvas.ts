@@ -156,8 +156,6 @@ export interface LGraphCanvasState {
   hoveringOver: CanvasItem
   /** If `true`, pointer move events will set the canvas cursor style. */
   shouldSetCursor: boolean
-  /** The mouse position when dragging the canvas. */
-  draggingCanvasMouse: number[] // yyh
 }
 
 /**
@@ -226,7 +224,6 @@ export class LGraphCanvas {
     readOnly: false,
     hoveringOver: CanvasItem.Nothing,
     shouldSetCursor: true,
-    draggingCanvasMouse: [], // yyh
   }
 
   // Whether the canvas was previously being dragged prior to pressing space key.
@@ -3162,7 +3159,6 @@ export class LGraphCanvas {
     /** The mouseup event occurred near the mousedown event. */
     /** Normal-looking click event - mouseUp occurred near mouseDown, without dragging. */
     const isClick = pointer.up(e)
-    console.log("node123", isClick, e);
     if (isClick === true) {
       pointer.isDown = false
       pointer.isDouble = false
@@ -3170,6 +3166,7 @@ export class LGraphCanvas {
       this.connecting_links = null
       this.dragging_canvas = false
 
+      // yyh
       if (e.button === 0) {
         this.dragging_rectangle_ready = false;
       } else if (e.button === 2) {
@@ -3178,6 +3175,7 @@ export class LGraphCanvas {
             this.processContextMenu(node, e);
         }
       }
+      // yyh
 
       graph.change()
 
