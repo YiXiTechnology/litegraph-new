@@ -3185,10 +3185,7 @@ export class LGraphCanvas {
       this.dragging_canvas = false
 
       // yyh
-      if (e.button === 0) {
-        this.dragging_rectangle = null;
-        this.dragging_rectangle_ready = false;
-      } else if (e.button === 2) {
+      if (e.button === 2) {
         this.processContextMenu(null, e);
       }
       // yyh
@@ -3326,6 +3323,9 @@ export class LGraphCanvas {
     } else if (e.button === 2) {
       // right button
       this.dirty_canvas = true
+
+      // yyh
+      this.dragging_canvas = false;
     }
 
     pointer.isDown = false
