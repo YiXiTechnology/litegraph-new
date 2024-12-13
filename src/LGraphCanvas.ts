@@ -2051,12 +2051,15 @@ export class LGraphCanvas {
     ) {
       // Right / aux button
 
+      // yyh
       // Sticky select - won't remove single nodes
       if (node) {
         this.processSelect(node, e, true)
         // Show context menu for the node or group under the pointer
         this.processContextMenu(node, e)
       }
+      this.dragging_canvas = true;
+      this.dragging_canvas_mouse = [e.clientX, e.clientY];
       // yyh
       
     }
@@ -2303,10 +2306,7 @@ export class LGraphCanvas {
         }
 
          // yyh
-        pointer.onClick = () => {
-          this.dragging_rectangle_ready = true;
-          this.dragging_canvas_mouse = [e.clientX, e.clientY];
-        }
+         this.dragging_rectangle_ready = true;
       }
     }
 
