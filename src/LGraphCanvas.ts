@@ -271,16 +271,6 @@ export class LGraphCanvas {
   }
   // #endregion Legacy accessors
 
-  // yyh
-  get dragging_canvas_mouse(): number[] {
-    return this.state.draggingCanvasMouse
-  }
-
-  set dragging_canvas_mouse(value: number[]) {
-    this.state.draggingCanvasMouse = value
-  }
-  // yyh
-
   get title_text_font(): string {
     return `${LiteGraph.NODE_TEXT_SIZE}px Arial`
   }
@@ -1590,7 +1580,6 @@ export class LGraphCanvas {
     this.highlighted_links = {}
 
     this.dragging_canvas = false
-    this.dragging_canvas_mouse = []; // yyh
 
     this.#dirty()
     this.dirty_area = null
@@ -2059,7 +2048,6 @@ export class LGraphCanvas {
         this.processContextMenu(node, e)
       }
       this.dragging_canvas = true;
-      this.dragging_canvas_mouse = [e.clientX, e.clientY];
       // yyh
       
     }
@@ -2306,9 +2294,7 @@ export class LGraphCanvas {
         }
 
         // yyh
-        pointer.onClick = () => {
-          this.dragging_rectangle_ready = true;
-        }
+        this.dragging_rectangle_ready = true;
       }
     }
 
@@ -3176,7 +3162,7 @@ export class LGraphCanvas {
     /** The mouseup event occurred near the mousedown event. */
     /** Normal-looking click event - mouseUp occurred near mouseDown, without dragging. */
     const isClick = pointer.up(e)
-    console.log("node123", isClick, e, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
+    console.log("node123", isClick, e);
     if (isClick === true) {
       pointer.isDown = false
       pointer.isDouble = false
