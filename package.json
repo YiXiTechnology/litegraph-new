@@ -1,0 +1,61 @@
+{
+  "name": "@comfyorg/litegraph",
+  "version": "0.8.44",
+  "type": "module",
+  "description": "A graph node editor similar to PD or UDK Blueprints. It works in an HTML5 Canvas and allows to export graphs to be included in applications.",
+  "main": "./dist/litegraph.umd.js",
+  "module": "./dist/litegraph.es.js",
+  "types": "./dist/litegraph.d.ts",
+  "style": "./dist/css/litegraph.css",
+  "exports": {
+    ".": {
+      "import": "./dist/litegraph.es.js",
+      "require": "./dist/litegraph.umd.js",
+      "types": "./dist/litegraph.d.ts"
+    },
+    "./style.css": "./dist/css/litegraph.css"
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "private": false,
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "watch": "vite build --watch",
+    "release": "node scripts/release.js",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comfy-Org/litegraph.js.git"
+  },
+  "author": "comfyorg",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/Comfy-Org/litegraph.js/issues"
+  },
+  "homepage": "https://github.com/Comfy-Org/litegraph.js",
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@stylistic/eslint-plugin": "^2.10.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.1.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.14.0",
+    "vite": "^5.3.4",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.4"
+  }
+}
