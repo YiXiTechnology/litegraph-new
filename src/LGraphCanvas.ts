@@ -3176,6 +3176,7 @@ export class LGraphCanvas {
     /** The mouseup event occurred near the mousedown event. */
     /** Normal-looking click event - mouseUp occurred near mouseDown, without dragging. */
     const isClick = pointer.up(e)
+    console.log("node123", isClick, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
     if (isClick === true) {
       pointer.isDown = false
       pointer.isDouble = false
