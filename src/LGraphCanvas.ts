@@ -3176,13 +3176,22 @@ export class LGraphCanvas {
     /** The mouseup event occurred near the mousedown event. */
     /** Normal-looking click event - mouseUp occurred near mouseDown, without dragging. */
     const isClick = pointer.up(e)
-    console.log("node123", isClick, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
+    console.log("node123", isClick, e, e.canvasX, e.canvasY, this.dragging_canvas_mouse);
     if (isClick === true) {
       pointer.isDown = false
       pointer.isDouble = false
       // Required until all link behaviour is added to Pointer API
       this.connecting_links = null
       this.dragging_canvas = false
+
+      // yyh
+      if (e.button === 0) {
+        this.dragging_rectangle = null;
+        this.dragging_rectangle_ready = false;
+      } else if (e.button === 2) {
+        this.processContextMenu(null, e);
+      }
+      // yyh
 
       graph.change()
 
@@ -3316,20 +3325,7 @@ export class LGraphCanvas {
       this.dragging_canvas = false
     } else if (e.button === 2) {
       // right button
-      // this.dirty_canvas = true
-
-      console.log("node123", e.canvasX, e.canvasY, this.dragging_canvas_mouse);
-      // yyh
-      if(Math.abs(e.clientX - this.dragging_canvas_mouse[0]) < 3 && Math.abs(e.clientY - this.dragging_canvas_mouse[1]) < 3) {
-          var node = this.graph.getNodeOnPos( e.canvasX, e.canvasY, this.visible_nodes);
-          if (!node) {
-              this.processContextMenu(node, e);
-          }
-      }
-      this.dirty_canvas = true;
-      this.dragging_canvas = false;
-      this.dragging_canvas_mouse = []; // yyh
-
+      this.dirty_canvas = true
     }
 
     pointer.isDown = false
