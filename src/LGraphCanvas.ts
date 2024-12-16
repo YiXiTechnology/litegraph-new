@@ -3168,6 +3168,7 @@ export class LGraphCanvas {
 
       // yyh
       if (e.button === 0) {
+        this.dragging_rectangle = null;
         this.dragging_rectangle_ready = false;
       } else if (e.button === 2) {
         let node = this.graph.getNodeOnPos( e.canvasX, e.canvasY, this.visible_nodes);
